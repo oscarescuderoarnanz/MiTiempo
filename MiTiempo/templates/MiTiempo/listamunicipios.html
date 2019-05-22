@@ -1,0 +1,55 @@
+{% extends 'MiTiempo/base.html' %}
+
+{%block boton%}{%endblock%}
+
+	{% block content %}
+        <style>
+            h1{
+                text-align: center;
+            }
+			h2{
+                text-align: left;
+            }
+
+			#formulario {float: right;background:red}
+        </style>
+
+        <br></br>
+
+		<div id="formulario">
+			<fieldset>
+				<legend><h4><b>Filtrado por Tª:</b></h4></legend>
+				<form name="formulario" method="post">
+
+					<input type="number" name="numeromin" value="0" min="0" max="100" step="1">
+					<input type="number" name="numeromax" value="0" min="0" max="100" step="1">
+					<p>
+						<input type="submit" value="Enviar">&nbsp
+   						<input type="reset" value="Borrar">
+					</p>
+
+				</form>
+			</fieldset>
+		</div>
+
+
+
+        <div class="content-box-yellow">
+			{% if vacio %}
+				<h1> Aun no hay ningún municipio buscado. </h1>
+			{% else %}
+				<h1><b>Lista municipios:</b></h1>
+	            <ul><h2>
+	                {% for m in mun%}
+	                    <li><a href="municipios/{{m.municipio_id}}">{{m.nombre_municipio}}</a></li>
+						Número de comentarios: {{m.numcom}}
+	                {% endfor %}
+	            </h2></ul>
+			{% endif%}
+        </div>
+
+    {% endblock %}
+
+	{% block XML %}
+		<li><a href="municipios?format=xml" target="_blank">Descarga como fichero XML</a></li>
+	{% endblock %}

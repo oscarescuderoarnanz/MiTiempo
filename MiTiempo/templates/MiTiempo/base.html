@@ -1,0 +1,137 @@
+{% load staticfiles %}
+
+<html>
+	<head>
+		<title>Mi Tiempo</title>
+			<!--favicon-->
+			<link rel="icon" type="image/png" href="{% static 'MiTiempo/favicon.ico' %}">
+			<!--CSS para el menu de opciones-->
+			<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+			<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+			{% if request.user.is_authenticated %}
+				<link rel="stylesheet" href="MiTiempo/usercss.css">
+			{% else %}
+				<link rel="stylesheet" href="{% static 'MiTiempo/main.css' %}">
+			{% endif %}
+	</head>
+
+    {% block base %}
+
+	    <body>
+			<header>
+		        <div id = "banner">
+				    <a href="/"><img src="https://v5i.tutiempo.net/mapas/espana/espana.jpg" width="70" height="70"/></a>
+		        </div>
+
+
+		    		{% if request.user.is_authenticated %} <!---SI ESTOY REGISTRADO-->
+						<div id ="log2">
+							<div class="logout-box">
+								<form action="/logout" method="POST">
+									{% csrf_token %}
+									<button type="submit">Logout</button>
+								</form>
+							</div>
+
+							<div class="log-comment">
+								<p>Estás loggeado como: {{ request.user.username }}</p>
+							</div>
+						</div>
+		    		{% else %} <!---SI NO ESTOY REGISTRADO-->
+						<div id = "log">
+							<div class="login-box">
+								<form action="/login" method="POST">
+									{% csrf_token %}
+									<label for="id_username">Nombre de usuario: </label> <input id="id_username" name="username" type="text" /></br>
+									<label for="id_password">Contraseña: </label> <input id="id_password" name="password" type="password" /></br>
+									<button type="submit">Login</button>
+								</form>
+							</div>
+						</div>
+		    		{% endif %}
+
+
+				<div id="navbar" class="navbar-collapse collapse">
+					<div class="page-menu">
+						<ul class="nav navbar-nav navbar">
+							{% if request.path != "/" %}
+								<li><a href="/">Inicio</a></li>
+							{% endif %}
+		   					<li><a href="/municipios">Todos</a></li>
+							<li><a href="/info">Info</a></li>
+		   					<li><a href="/register">Registrarse</a></li>
+							{% if user.is_authenticated %}
+								<li><a href="/{{request.user.username}}">Página usuario</a></li>
+							{% endif %}
+							<li><a href="/usuarios">Lista páginas usuarios</a></li>
+							{% block XML %}
+								<li><a href="?format=xml" target="_blank">Descarga como fichero XML</a></li>
+							{% endblock%}
+						</ul>
+					</div>
+				</div>
+		    </header>
+
+			{% block boton %}
+			<div id = "boton">
+				<form action ='' method="POST">
+					{% csrf_token %}
+					{{content}}
+					<label for="boton"></label><input type = hidden value="{{value}}" name = "botton" size='1' type="text">
+					<button type="submit">Ver</button>
+			    </form>
+			</div>
+			{% endblock %}
+
+			{% block content %}
+				<div id = "lista_user">
+					<fieldset>
+						<legend><b>Listado de usuarios:</b></legend>
+						{% if empty_users %}
+							<b>No hay usuarios registrados.</b>
+						{%else%}
+							{% for u in usuarios %}
+								<li><b><a href={{u.username}}>{{u.titulo}}</a></b></li>
+								<b>Nombre de usuario: {{u.username}}</b>
+								<br></br>
+							{% endfor %}
+						{%endif%}
+					</fieldset>
+				</div>
+
+				<div class="content-box-yellow">
+					<b><u>{{texto}}</u></b>
+					<br></br>
+					{% for m in municipios %}
+						<li><b><a href="{{m.enlace}}" target="_blank"> {{m.nombre_municipio}} </a></b></li>
+						<li><b><u>Altitud:</u></b> {{m.altitud}}</li>
+						<li><b><u>Latitud:</u></b> {{m.latitud}}</li>
+						<li><b><u>Longitud:</u></b> {{m.longitud}}</li>
+						<li><b><u>Prob. precipitación:</u></b> {{m.precipitaion}}</li>
+						<li><b><u>Tª máxima:</u></b> {{m.tmax}}</li>
+						<li><b><u>Tª mínima:</u></b> {{m.tmin}}</li>
+						<li><b><u>Descripción:</u></b> {{m.descripcion}}</li>
+						<li><b><a href="municipios/{{m.municipio_id}}"> Más información </a></b></li>
+						<form action ='{{username}}' method="POST">
+							{% csrf_token %}
+							<label for="titulo"></label><input type = hidden name="puntuacion" value="{{m.nombre_municipio}}" size='8' type="text">
+							<button type="submit">+1</button>
+					    </form>
+						<br></br>
+					{% endfor %}
+				</div>
+			{% endblock %}
+
+
+			<!---Pie de pagina-->
+		    <footer>
+		        <div id = "pie">
+		            Esta aplicación utiliza datos proporcionados por la AEMET.<br></br>
+		            <a href="http://www.aemet.es/es/portada" target="_blank"> AEMET</a>
+		        </div>
+		    </footer>
+	    {% endblock %}
+
+    </body>
+
+</html>

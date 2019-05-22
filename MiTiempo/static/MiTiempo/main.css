@@ -1,0 +1,95 @@
+body {
+    height: 100%;
+    width: 100%;
+    background-repeat: repeat;
+    background-image: url("2.jpg");
+    position: relative;
+    background-size: cover;
+}
+
+header{
+    background: #000;
+    color: red;
+}
+
+.menu1 .nav, .page-menu, .collapse, .navbar {
+	font-size: large;
+	background-color: #b3e0ff;
+
+}
+
+.col-sm-3 {
+	background-color: #b3e0ff;
+	color: #000000;
+    font-weight : bold;
+}
+
+footer{
+    position: relative;
+    margin-top: -10px;
+    width: 100%;
+    padding: 50px;
+    clear: both;
+    background: #000;
+    text-align: center;
+    color: #fff;
+}
+
+#lista_user{float: right;background:red}
+
+#log{
+    text-align: right;
+    color: red;
+}
+
+#log2{
+    text-align: right;
+    color: red;
+}
+
+#boton{
+    margin: 0 0 25px;
+    overflow: hidden;
+    padding: 20px;
+    background-color:#0af6cf;
+    border: 1px solid #0a43f6;
+    text-align: center;
+}
+
+#banner{
+    border: red 4px solid;
+    width:77px;
+    height:77px;
+}
+
+#pie{
+    border: red 5px solid;
+}
+
+#comentarios{float: right;background:red}
+
+fieldset{
+    margin: 0px 0% 0px 80px;
+    font-family: sans-serif;
+    width: 350;
+    align: right;
+}
+
+.content-box-yellow, .content-box-blue, .content-box-green {
+    margin: 0 0 25px;
+    overflow: hidden;
+    padding: 20px;
+    vertical-align: text-top;
+}
+.content-box-yellow {
+    background-color: #fef5c4;
+    border: 1px solid #fadf98;
+}
+.content-box-blue {
+    background-color: #d8ecf7;
+    border: 1px solid #afcde3;
+}
+.content-box-green {
+    background-color: #d9edc2;
+    border: 1px solid #b2ce96;
+}

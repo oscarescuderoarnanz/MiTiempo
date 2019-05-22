@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<MUNICIPIOS>
+	<TITULO>Pagina Principal en XML</TITULO>
+	<INFORMACION>
+		{% for m in municipios %}
+			<MUNICIPIO>
+				<nombre>{{ m.nombre_municipio}}</nombre>
+				<id_municipio>{{m.municipio_id}}</id_municipio>
+                <altitud>{{m.altitud }}</altitud>
+                <latitud>{{ m.latitud }}</latitud>
+                <longitud>{{ m.longitud }}</longitud>
+				<prob_precipitacion>{{ m.precipitaion }}</prob_precipitacion>
+				<descripcion>{{ m.descripcion }}</descripcion>
+				<tmax>{{ m.tmax }}</tmax>
+				<tmin>{{ m.tmin }}</tmin>
+				<numcomentarios>{{ m.numcom }}</numcomentarios>
+				<puntuacion>{{ m.puntuacion }}</puntuacion>
+				<urlxmlAEMET>http://www.aemet.es/xml/municipios/localidad_{{m.id_split}}.xml</urlxmlAEMET>
+			</MUNICIPIO>
+		{% endfor %}
+	</INFORMACION>
+</MUNICIPIOS>

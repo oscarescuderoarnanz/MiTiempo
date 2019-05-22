@@ -1,0 +1,36 @@
+{% extends 'MiTiempo/base.html' %}
+
+{%block boton%}{%endblock%}
+
+	{% block content %}
+        <style>
+            h1{text-align: center;}
+			h2{text-align: left;}
+			#formulario {float: right;background:red}
+        </style>
+
+        <br></br>
+
+        <div class="content-box-blue">
+            <h1><b>Lista municipios con Tª máxima entre: {{tmin}}-{{tmax}}:</b></h1>
+        </div>
+
+        <div class="content-box-yellow">
+			{% if empty %}
+				<h1> No hay ningún municipio con temperatura máxima entre los valores establecidos.</h1>
+			{% else %}
+	            <ul><h2>
+	                {% for m in mun%}
+	                    <li>Tª máxima de {{m.nombre_municipio}}: {{m.tmax}}</li>
+	                {% endfor %}
+	            </h2></ul>
+			{% endif %}
+
+        </div>
+
+		<div class="content-box-blue">
+			<h1><a href = "/municipios">Volver a la página de municipios</a></h1>
+		</div>
+    {% endblock %}
+
+{% block XML %}{% endblock %}

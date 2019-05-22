@@ -1,0 +1,74 @@
+{% extends 'MiTiempo/base.html' %}
+
+{%block boton%}{%endblock%}
+
+{% block content %}
+	<style>
+		h2{
+			text-align: left;
+		}
+
+		#new_comentario{
+			margin: auto;
+			font-family: sans-serif;
+			width: 350;
+			align: center;
+		}
+	</style>
+
+	{% if user.is_authenticated %}
+		<div class="content-box-green">
+			<div id = "new_comentario">
+				<fieldset>
+					<legend><h4><b>Nuevo comentario: </b></h4></legend>
+					<form  method="POST">
+						{% csrf_token %}
+						<p><input type="text" name="cmd" size="25"></p>
+						<p>
+						<input type="submit" value="Enviar">
+						<input type="reset" value="Borrar">
+						</p>
+					</form>
+				</fieldset>
+			</div>
+		</div>
+	{% endif %}
+
+    <div class="content-box-blue">
+        <h1><b>Información de {{mun.nombre_municipio}} (en cuanto a predicción para mañana, en el rango 0 a 24 horas)</b></h1>
+    </div>
+
+	<div id="comentarios">
+		<fieldset>
+			<legend><h4><b>Comentarios municipio:</b></h4></legend>
+			{% for cms in cms_munis %}
+				<h4><li><b>{{cms.texto}}</b></li></h4>
+				<h5><b><u>Comentado por {{cms.autor}}</u></b></h5>
+			{% endfor %}
+		</fieldset>
+	</div>
+
+    <div class="content-box-yellow">
+        <ul><h2>
+            <!---Datos persistentes-->
+			<li><u><b>Municipio:</b></u> {{mun.nombre_municipio}}</li>
+            <li><u><b>Latitud:</b></u> {{mun.latitud}}</li>
+            <li><u><b>Altitud:</b></u> {{mun.altitud}}</li>
+            <li><u><b>Longitud:</b></u> {{mun.longitud}}</li>
+            <!---Datos no persistentes-->
+            <br></br>
+            <li><u><b>Probabilidad de precipitación:</b></u> {{mun.precipitaion}}</li>
+            <li><u><b>Estado cielo:</b></u> {{mun.descripcion}}</li>
+            <li><u><b>Temperatura máxima (ºC):</b></u> {{mun.tmax}}</li>
+            <li><u><b>Temperatura mínima (ºC):</b></u> {{mun.tmin}}</li>
+			<br></br>
+			<li><u><b>Puntuación:</b></u> {{mun.puntuacion}}</li>
+			<br></br>
+			<li><u><b>Ver en página AEMET:</b></u> <a href="{{mun.enlace}}" target="_blank">{{mun.nombre_municipio}}</a></li>
+        </h2></ul>
+	</div>
+
+
+{% endblock %}
+
+{% block XML %}{% endblock %}

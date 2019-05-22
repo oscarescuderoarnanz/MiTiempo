@@ -1,0 +1,159 @@
+h1{
+    text-align: center;
+    color: {{color_text}};
+}
+
+h2{
+    font-size: {{font_size}};
+    text-align: center;
+    color: {{color_text}};
+}
+
+h4{
+    color: {{color_text}};
+}
+
+body {
+    position: relative;
+    background-size: cover;
+    background-repeat: repeat;
+    background-image: url({{image_url}});
+    margin: 0px;
+    padding: 0px;
+    font-size: {{font_size}};
+    background-color: {{background_color}};
+    color: {{color_text}};
+}
+
+header{
+    background: #000;
+    color: red;
+}
+
+.container {
+      padding: 0;
+      margin: 0;
+      list-style: none;
+
+      display: -webkit-box;
+      display: -moz-box;
+      display: -ms-flexbox;
+      display: -webkit-flex;
+      display: flex;
+
+      -webkit-flex-flow: row wrap;
+      justify-content: space-around;
+}
+
+.menu1 .nav, .page-menu, .collapse, .navbar {
+	font-size: large;
+	background-color: #b3e0ff;
+
+}
+
+.col-sm-3 {
+	background-color: #b3e0ff;
+	color: #000000;
+    font-weight : bold;
+}
+
+footer{
+    position: relative;
+    margin-top: -10px;
+    width: 100%;
+    padding: 50px;
+    clear: both;
+    background: #000;
+    text-align: center;
+    color: #fff;
+}
+
+#search_munis{
+   float:left;
+   width:50%;
+}
+
+#change_titulo{
+    width:50%;
+    float:right;
+}
+
+#lista_user{float: right;background:red}
+
+#log{
+    text-align: right;
+    color: red;
+}
+
+#log2{
+    text-align: right;
+    color: red;
+}
+
+#boton{
+    margin: 0 0 25px;
+    overflow: hidden;
+    padding: 5px;
+    background-color:#0af6cf;
+    border: 5px solid #0a43f6;
+    text-align: center;
+}
+
+#banner{
+    border: red 4px solid;
+    width:77px;
+    height:77px;
+}
+
+#pie{
+    border: red 5px solid;
+}
+
+#comentarios{float: right;background:red}
+
+#general{
+    margin-top: 150px;
+    border: #f6eb0a 5px solid;
+    overflow: : hidden;
+    height: 230px;
+}
+
+#izq{
+   float:left;
+   width:33%;
+}
+
+#centro{
+    width:33%;
+    float:left;
+}
+#der{
+   width:33%;
+   float:left;
+}
+
+fieldset{
+    margin: 0px 0% 0px 80px;
+    font-family: sans-serif;
+    width: 350;
+    align: right;
+}
+
+.content-box-yellow, .content-box-blue, .content-box-green {
+    margin: 0 0 25px;
+    overflow: hidden;
+    padding: 20px;
+    vertical-align: text-top;
+}
+.content-box-yellow {
+    background-color: #fef5c4;
+    border: 1px solid #fadf98;
+}
+.content-box-blue {
+    background-color: #d8ecf7;
+    border: 1px solid #afcde3;
+}
+.content-box-green {
+    background-color: #d9edc2;
+    border: 1px solid #b2ce96;
+}

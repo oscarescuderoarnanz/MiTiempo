@@ -1,0 +1,30 @@
+{% extends 'MiTiempo/base.html' %}
+
+{%block boton%}{%endblock%}
+
+{% block content %}
+
+    <style>
+        h1{
+            text-align: center;
+        }
+    </style>
+
+    <div class="content-box-yellow">
+        <h1> Lista de usuarios con página web </h1>
+    </div>
+
+    <div class="content-box-blue">
+        {% if vacio %}
+            <h2> No hay páginas de usuarios creadas. </h2>
+        {% else %}
+            {% for i in usuarios %}
+                <h3><li><a href="{{i.username}}"><b>Página usuario</b>: <u>{{i.username}}</u></a></li></h3>
+            {% endfor %}
+    {% endif %}
+    </div>
+
+{% endblock %}
+
+{% block XML %}
+{% endblock %}

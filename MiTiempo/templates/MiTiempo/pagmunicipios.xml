@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<MUNICIPIOS>
+	<TITULO>Pagina municipios en XML</TITULO>
+	<INFORMACION>
+		{% for m in municipios %}
+			<MUNICIPIO>
+                <nombre>{{ m.nombre_municipio}}</nombre>
+				<numcomentarios>{{ m.numcom}}</numcomentarios>
+			</MUNICIPIO>
+		{% endfor %}
+	</INFORMACION>
+</MUNICIPIOS>

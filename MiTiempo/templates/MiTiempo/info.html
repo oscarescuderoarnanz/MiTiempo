@@ -1,0 +1,86 @@
+{% extends 'MiTiempo/base.html' %}
+
+{%block boton%}{%endblock%}
+
+	{% block content %}
+        <style>
+            h1{
+                text-align: center;
+            }
+        </style>
+
+        <br></br>
+        <div class="content-box-blue">
+            <h1><b>Información</b></h1>
+        </div>
+
+        <div class="content-box-yellow">
+            <p><u>Autor de la página:</u> Óscar Escudero Arnanz</p>
+            <p><u>Titulación:</u> Grado de Ingeniería en Tecnologías de la Telecomunicación (URJC)</p>
+            <p>Madrid, España</p>
+        </div>
+
+        <div class="content-box-green">
+            <h1><b>Funcionamiento de la práctica</b></h1>
+			<p> Página web que aglutina información sobre municipios de España, principalmente información metereológica.
+			    Dicha aplicación web se encarga de descargar la información de los municipios en el sitio web de la AEMET, de <table>
+			    forma que los usuarios puedan monotorizar con facilidad las previsiones, del día siguiente, para aquellos municipios que les parezcan de interés.
+				Dicha información de los municipios buscados se actualizará cada hora. Además, podrá realizar comentarios sobre estos municipos y puntuarlos.
+				Tendrán dos formas de moverse por la aplicación: pública o privada.
+			</table></p>
+			<u>Funcionamiento general</u>
+			<p><li>Los usuarios pueden darse de alta registrandose desde la aplicación.</li></p>
+			<p><li>Puede hacer uso de la página web de dos formas diferentes: </li></p>
+
+			<p><b><u>Interfaz pública</u></b></p>
+
+			<p><u>	Página principal </u></p>
+			<p><li>	Se podrá ver un listado de los 10 municipios con más comentarios. En caso
+				de no tener 10 municipios con mas comentarios, se muetran aquellos (hasta 10) que tienen comentarios.</li></p>
+			<p><li>	Para cada municipio observaremos datos metereológicos y geográficos, junto con un enlace "Más información" donde podrás ver más
+				información acerca del municipio.</li></p>
+			<p><li>	En la parte derecha de la página principal podremos ver un listado con los usuarios registrados con el título de sus páginas
+				como enlaces a estas.</li></p>
+			<p><li> Disponemos de un botón en un recuadro azul donde al pulsarlo se verán sólo los municipios (entre los disponibles en "Todos") con probabilidad
+				 de precipitación mayor que cero. Si se vuelve a pulsar, se verán los que tengan probabilidad de precipitación igual a cero (entre los disponibles en "Todos").
+				 Si se vuelve a pulsar una vez más, se volverán a ver todos los municipios (hasta 10 más comentados).</li></p>
+			<p><li> Podemos descargarnos la página principal como un documento XML (veremos hasta 10 municipos ordenados de más a menos comentarios).</li></p>
+			<p><li> Podemos puntuar cualquier municipio.</li></p>
+
+			<p><u>	Página de usuario </u></p>
+			<p><li> Muestra los municipios seleccionados por ese usuario. Para cada municipio se muestra la misma información que en
+					la página principal(referente a ese municipio). Los municipios aparecen en el orden en que los ha seleccionado el usuario.</li></p>
+			<p><li> Podemos descargarnos la página del usuario como un documento XML</li></p>
+
+			<p><u>	Página de todos los municipios ("Todos")</u></p>
+			<p><li> Página con todos los municipos que han sido seleccionados por algún usuario.</li></p>
+			<p><li> Podemos observar el nombre del municipio (como enlace a la página del municipio) y el número de
+				comentarios que dicho municipio ha recibido.</li></p>
+			<p><li> Disponemos de un formulario para filtrar según la temperatura máxima de mañana: se muestran solo los municipios que para mañana
+				tengan previsión de temperatura máxima entre las dos que se indiquen.</li></p>
+			<p><li>Podemos descargarnos la página como un documento XML</li></p>
+
+			<p><u>	Página del municipio </u></p>
+			<p><li> Muestra información de este municipio.</li></p>
+
+			<p><u>	Página listado de usuarios </u></p>
+			<p><li> Muestraaquellas páginas web de usuarios disponibles.</li></p>
+
+			<p><b><u> Interfaz privada </u></b></p>
+			<p> Puede realizar todo lo comentado en la parte pública, además de:</p>
+
+			<p><u>	Página del municipio </u></p>
+			<p><li>Puede realizar comentarios.</li></p>
+
+			<p><u>	Página de usuario </u></p>
+			<p><li> Puede realizar busqueda de municipios.</li></p>
+			<p><li> Puede personalizar su página.</li></p>
+			<p><li> Puede quitar municipios de su página personal.</li></p>
+
+        </div>
+
+
+    {% endblock %}
+
+	{% block XML %}
+	{% endblock %}

@@ -1,0 +1,33 @@
+{% extends 'MiTiempo/base.html' %}
+
+	{% block base %}
+
+		{% load staticfiles %}
+			<head>
+				<title>Registrarse en la app Mi Tiempo</title>
+				<link rel="stylesheet" href="{% static 'MiTiempo/register.css' %}">
+
+
+			<!-------------- This is for the login box (from: https://bootsnipp.com ) ---------------->
+			<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+			<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+			<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+		 	<!---------------------------------------------------------------------------------------->
+
+			</head>
+
+
+    		<div class="container">
+    		    <div class="card card-container">
+    		        <p id="profile-name" class="profile-name-card">Cree un nuevo usuario:</p>
+    		        <form class="form-signin" action="/register" method="POST">
+						{% csrf_token %}
+    		            <input name="username" type="text" id="inputUsername" class="form-control" placeholder="Nombre de usuario" required autofocus/>
+    		            <input name="password" type="password" id="inputPassword" class="form-control" placeholder="Contraseña" required/>
+    		            <input name="email" type="text" id="inputEmail" class="form-control" placeholder="Email" required />
+    		            <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit">¡Regístrate!</button>
+    		        </form>
+    		    </div>
+    		</div>
+
+		{% endblock %}

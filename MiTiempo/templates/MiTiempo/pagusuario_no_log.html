@@ -1,0 +1,42 @@
+{% extends 'MiTiempo/base.html' %}
+
+{%block boton%}{%endblock%}
+
+{% block content %}
+	<div class="content-box-green">
+		<h1>{{user.titulo}}</h1>
+	</div>
+
+	<div class="content-box-blue">
+		{% if vacio %}
+			<h2> El usuario aun no ha buscado ningún municipio.
+		{% else %}
+			<h2><u><b> Municipios buscados: </b></u></h2>
+			{% for m in municipios %}
+				<li><b><a href="{{m.enlace}}"> {{m.nombre_municipio}} </a></b></li>
+				<li><b><u>Altitud:</u></b> {{m.altitud}}</li>
+				<li><b><u>Latitud:</u></b> {{m.latitud}}</li>
+				<li><b><u>Longitud:</u></b> {{m.longitud}}</li>
+				<li><b><u>Prob. precipitaion:</u></b> {{m.precipitaion}}</li>
+				<li><b><u>Tª máxima:</u></b> {{m.tmax}}</li>
+				<li><b><u>Tª mínima:</u></b> {{m.tmin}}</li>
+				<li><b><u>Descripción:</u></b> {{m.descripcion}}</li>
+				<li><b><a href="municipios/{{m.municipio_id}}"> Más información </a></b></li>
+				{% if request.user.username == username %}
+					<form action ='{{username}}' method="POST">
+						{% csrf_token %}
+						<label for="titulo"></label><input name="quitar_muni" value="{{m.nombre_municipio}}" size='8' type="text">
+						<button type="submit">Quitar</button>
+				    </form>
+				{% endif %}
+				<br></br>
+			{% endfor %}
+		{% endif %}
+	</div>
+	<br></br>
+
+{% endblock %}
+
+{% block XML %}
+	<li><a href="{{username}}?format=xml" target="_blank">Descarga como fichero XML</a></li>
+{% endblock %}
